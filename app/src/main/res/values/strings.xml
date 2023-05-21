@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">konversi</string>
+    <string name="intro">Masukkan harga barang dan diskon yang didapatkan!</string>
+    <string name="celcius">Celcius</string>
+    <string name="hitung">Hitung</string>
+    <string name="total">Fahrenheit : %s</string>
+    <string name="harga_invalid">Suhu celcius tidak boleh kosong.</string>
+
+</resources>
