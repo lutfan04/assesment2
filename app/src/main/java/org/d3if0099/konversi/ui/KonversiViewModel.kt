@@ -1,4 +1,4 @@
-package org.d3if0099.konversi
+package org.d3if0099.konversi.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
