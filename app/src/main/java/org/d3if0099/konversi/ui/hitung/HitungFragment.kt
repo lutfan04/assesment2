@@ -1,8 +1,9 @@
-package org.d3if0099.konversi.ui
+package org.d3if0099.konversi.ui.hitung
 
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -10,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import org.d3if0099.konversi.R
 import org.d3if0099.konversi.databinding.FragmentHitungBinding
+import org.d3if0099.konversi.db.KonversiDb
 import org.d3if0099.konversi.model.HasilKonversi
 
 
@@ -19,8 +21,11 @@ class HitungFragment : Fragment() {
     private lateinit var binding: FragmentHitungBinding
 
 
-    private val viewModel: KonversiViewModel by lazy {
-        ViewModelProvider(requireActivity())[KonversiViewModel::class.java]
+    private val viewModel: HitungViewModel by lazy {
+        val db = KonversiDb.getInstance(requireContext())
+        val factory = HitungViewModelFactory(db.dao)
+        ViewModelProvider(this, factory)[HitungViewModel::class.java]
+
 
     }
 
@@ -55,6 +60,11 @@ class HitungFragment : Fragment() {
         binding.shareButton.setOnClickListener { shareData() }
 
         viewModel.getHasilKonversi().observe(requireActivity(), { showResult(it) })
+        viewModel.data.observe(viewLifecycleOwner, {
+            if (it == null) return@observe
+            Log.d("HitungFragment", "Data tersimpan. ID = ${it.id}")
+        })
+
     }
 
     private fun showResult(result: HasilKonversi?) {
@@ -65,13 +75,14 @@ class HitungFragment : Fragment() {
 
     private fun hitungKonversi() {
         val celcius = binding.celciusEditText.text.toString()
-
+        val fahrenheit = binding.fahrenheitTextView.toString()
         if (TextUtils.isEmpty(celcius)) {
             Toast.makeText(context, R.string.celcius_invalid, Toast.LENGTH_LONG).show()
             return
         }
         viewModel.hitungKonversi(
             celcius.toInt(),
+            fahrenheit.toInt(),
         )
     }
 

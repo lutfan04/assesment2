@@ -8,7 +8,7 @@ data class KonversiEntity(
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0L,
     var tanggal: Long = System.currentTimeMillis(),
-    var celcius: Float,
-    var fahrenheit: Float,
+    var celcius: Int,
+    var fahrenheit: Int,
 
 )

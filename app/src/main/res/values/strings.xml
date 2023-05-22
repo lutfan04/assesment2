@@ -1,11 +1,10 @@
 <resources>
     <string name="app_name">konversi</string>
-    <string name="intro">Masukkan harga barang dan diskon yang didapatkan!</string>
+    <string name="intro">Masukkan Suhu dalam celcius!</string>
     <string name="celcius">Celcius</string>
     <string name="hitung">Hitung</string>
     <string name="total">Fahrenheit : %s</string>
-    <string name="harga_invalid">Suhu celcius tidak boleh kosong.</string>
-    <string name="celcius_invalid">celcius</string>
+    <string name="celcius_invalid">Suhu celcius tidak boleh kosong</string>
     <string name="tentang_aplikasi">Tentang Aplikasi</string>
     <string name="copyright">Aplikasi ini adalah sebuah konverter suhu sederhana yang memungkinkan pengguna untuk mengonversi suhu seperti Celsius ke Fahrenheit
 .\n\nAplikasi ini menggunakan arsitektur MVVM (Model-View-ViewModel) untuk memisahkan logika bisnis dari tampilan. Data binding digunakan untuk menghubungkan data antara ViewModel dan tampilan, sehingga perubahan pada data ViewModel akan secara otomatis memperbarui tampilan, dan sebaliknya.</string>
