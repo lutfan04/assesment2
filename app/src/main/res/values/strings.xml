@@ -6,5 +6,9 @@
     <string name="total">Fahrenheit : %s</string>
     <string name="harga_invalid">Suhu celcius tidak boleh kosong.</string>
     <string name="celcius_invalid">celcius</string>
-
+    <string name="tentang_aplikasi">Tentang Aplikasi</string>
+    <string name="copyright">Aplikasi ini adalah sebuah konverter suhu sederhana yang memungkinkan pengguna untuk mengonversi suhu seperti Celsius ke Fahrenheit
+.\n\nAplikasi ini menggunakan arsitektur MVVM (Model-View-ViewModel) untuk memisahkan logika bisnis dari tampilan. Data binding digunakan untuk menghubungkan data antara ViewModel dan tampilan, sehingga perubahan pada data ViewModel akan secara otomatis memperbarui tampilan, dan sebaliknya.</string>
+    <string name="bagikan">bagikan</string>
+    <string name="bagikan_template">Celcius: %1s\n %2s\n</string>
 </resources>

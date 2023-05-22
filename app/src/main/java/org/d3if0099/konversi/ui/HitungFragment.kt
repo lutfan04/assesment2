@@ -1,13 +1,13 @@
 package org.d3if0099.konversi.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import org.d3if0099.konversi.R
 import org.d3if0099.konversi.databinding.FragmentHitungBinding
 import org.d3if0099.konversi.model.HasilKonversi
@@ -24,18 +24,47 @@ class HitungFragment : Fragment() {
 
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.options_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.menu_about) {
+            findNavController().navigate(
+                R.id.action_hitungFragment_to_aboutFragment
+            )
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
 
         binding = FragmentHitungBinding.inflate(layoutInflater, container, false)
+        setHasOptionsMenu(true)
+
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.button.setOnClickListener { hitungKonversi() }
+        binding.shareButton.setOnClickListener { shareData() }
+
         viewModel.getHasilKonversi().observe(requireActivity(), { showResult(it) })
     }
+
+    private fun showResult(result: HasilKonversi?) {
+        if (result == null) return
+        binding.fahrenheitTextView.text = getString(R.string.total, result.total.toString())
+        binding.buttonGroup.visibility = View.VISIBLE
+    }
+
     private fun hitungKonversi() {
-        val celcius = binding.hargaEditText.text.toString()
+        val celcius = binding.celciusEditText.text.toString()
 
         if (TextUtils.isEmpty(celcius)) {
             Toast.makeText(context, R.string.celcius_invalid, Toast.LENGTH_LONG).show()
@@ -45,8 +74,20 @@ class HitungFragment : Fragment() {
             celcius.toInt(),
         )
     }
-    private fun showResult(result: HasilKonversi?) {
-        if (result == null) return
-        binding.totalTextView.text = getString(R.string.total, result.total.toString())
+
+    private fun shareData() {
+        val message = getString(
+            R.string.bagikan_template,
+            binding.celciusEditText.text,
+            binding.fahrenheitTextView.text
+        )
+        val shareIntent = Intent(Intent.ACTION_SEND)
+        shareIntent.setType("text/plain").putExtra(Intent.EXTRA_TEXT, message)
+        if (shareIntent.resolveActivity(
+                requireActivity().packageManager
+            ) != null
+        ) {
+            startActivity(shareIntent)
+        }
     }
 }
