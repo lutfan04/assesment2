@@ -10,4 +10,6 @@
 .\n\nAplikasi ini menggunakan arsitektur MVVM (Model-View-ViewModel) untuk memisahkan logika bisnis dari tampilan. Data binding digunakan untuk menghubungkan data antara ViewModel dan tampilan, sehingga perubahan pada data ViewModel akan secara otomatis memperbarui tampilan, dan sebaliknya.</string>
     <string name="bagikan">bagikan</string>
     <string name="bagikan_template">Celcius: %1s\n %2s\n</string>
+    <string name="belum_ada_data">Belum ada data</string>
+    <string name="histori">Histori</string>
 </resources>

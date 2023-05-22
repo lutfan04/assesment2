@@ -13,9 +13,18 @@
         <action
             android:id="@+id/action_hitungFragment_to_aboutFragment"
             app:destination="@id/aboutFragment" />
+        <action
+            android:id="@+id/action_hitungFragment_to_historiFragment"
+            app:destination="@id/historiFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
         android:name="org.d3if0099.konversi.ui.AboutFragment"
         android:label="AboutFragment" />
+    <fragment
+        android:id="@+id/historiFragment"
+        android:name="org.d3if0099.konversi.ui.histori.HistoriFragment"
+        android:label="@string/histori"
+        tools:layout="@layout/fragment_histori" />
+
 </navigation>
