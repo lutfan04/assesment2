@@ -9,6 +9,8 @@ import androidx.room.Query
 
 interface KonversiDao {@Insert
 fun insert(konversi: KonversiEntity)
-    @Query("SELECT * FROM konversi ORDER BY id DESC LIMIT 1")
-    fun getLastKonversi(): LiveData<KonversiEntity?>
+    @Query("SELECT * FROM konversi ORDER BY id DESC")
+    fun getLastKonversi(): LiveData<List<KonversiEntity>>
+    @Query("DELETE FROM konversi")
+    fun clearData()
 }

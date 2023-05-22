@@ -9,6 +9,5 @@ data class KonversiEntity(
     var id: Long = 0L,
     var tanggal: Long = System.currentTimeMillis(),
     var celcius: Int,
-    var fahrenheit: Int,
-
+//    var fahrenheit: Int,
 )

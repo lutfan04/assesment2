@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/hitungFragment"
         android:name="org.d3if0099.konversi.ui.hitung.HitungFragment"
-        android:label="fragment_hitung"
+        android:label="Konversi App"
         tools:layout="@layout/fragment_hitung" >
         <action
             android:id="@+id/action_hitungFragment_to_aboutFragment"

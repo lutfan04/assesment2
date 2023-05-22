@@ -65,10 +65,7 @@ class HitungFragment : Fragment() {
         binding.shareButton.setOnClickListener { shareData() }
 
         viewModel.getHasilKonversi().observe(requireActivity(), { showResult(it) })
-        viewModel.data.observe(viewLifecycleOwner, {
-            if (it == null) return@observe
-            Log.d("HitungFragment", "Data tersimpan. ID = ${it.id}")
-        })
+
 
     }
 
@@ -80,14 +77,14 @@ class HitungFragment : Fragment() {
 
     private fun hitungKonversi() {
         val celcius = binding.celciusEditText.text.toString()
-        val fahrenheit = binding.fahrenheitTextView.toString()
+//        val fahrenheit = binding.fahrenheitTextView.toString()
         if (TextUtils.isEmpty(celcius)) {
             Toast.makeText(context, R.string.celcius_invalid, Toast.LENGTH_LONG).show()
             return
         }
         viewModel.hitungKonversi(
-            celcius.toInt(),
-            fahrenheit.toInt(),
+          celcius.toInt()
+//            fahrenheit.toInt()
         )
     }
 
